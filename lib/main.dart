@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget
         child: Center(
           child: Container(
             child: const Text("Welcome to Begetter"),
+            
           ),
         ),
       ),
