@@ -1,8 +1,10 @@
 import 'package:begetter/home_page.dart';
 import 'package:flutter/material.dart';
+
 void main() {
   runApp(MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
