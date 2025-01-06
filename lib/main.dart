@@ -1,6 +1,7 @@
 import 'package:begetter/login_page.dart';
 import 'package:begetter/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,15 +13,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/', // Set initial route to be LoginPage
-      themeMode: ThemeMode.dark,
-      theme: ThemeData(primarySwatch: Colors.deepPurple),
-      darkTheme: ThemeData(brightness: Brightness.light),
-      routes: {
-        '/': (context) => LoginPage(),  // "/" denotes the page which is going to be displayed at top
-        '/home': (context) => HomePage(),  // Navigate to HomePage via '/home'
-        '/login': (context) => LoginPage(),  // LoginPage is initial screen
-      },
-    );
+        initialRoute: '/login', // Set initial route to be LoginPage
+        themeMode: ThemeMode.dark, // Dark theme as default
+        theme: ThemeData(
+          primarySwatch: Colors.deepPurple,
+          fontFamily: GoogleFonts.lato().fontFamily, // Use Lato font family
+          textTheme:
+              GoogleFonts.latoTextTheme(), // Apply Lato font to textTheme
+        ),
+        darkTheme: ThemeData(
+          brightness: Brightness.dark, // Apply dark theme
+        ),
+        routes: {
+          "/": (context) => LoginPage(),
+          "/home": (context) => HomePage(),
+          "/login": (context) => LoginPage()
+        });
   }
 }
