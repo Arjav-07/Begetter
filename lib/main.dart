@@ -14,15 +14,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: MyRoutes.HomeRoute, // Set initial route to be LoginPage
+      initialRoute: '/', // Now LoginPage is the default
       themeMode: ThemeMode.dark, // Dark theme as default
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
         fontFamily: GoogleFonts.lato().fontFamily, // Use Lato font family
         textTheme: GoogleFonts.latoTextTheme(), // Apply Lato font to textTheme
       ),
-
-      debugShowCheckedModeBanner: false,  // Removing debug banner
+      debugShowCheckedModeBanner: false, // Remove debug banner
 
       darkTheme: ThemeData(brightness: Brightness.light),
       routes: {
