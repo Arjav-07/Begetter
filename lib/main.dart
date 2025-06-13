@@ -1,7 +1,7 @@
 import 'package:begetter/pages/login_page.dart';
 import 'package:begetter/pages/home_page.dart';
+import 'package:begetter/widget/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:begetter/utils/routes.dart';
 
 void main() {
@@ -14,16 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/', // Now LoginPage is the default
       themeMode: ThemeMode.dark, // Dark theme as default
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-        fontFamily: GoogleFonts.lato().fontFamily, // Use Lato font family
-        textTheme: GoogleFonts.latoTextTheme(), // Apply Lato font to textTheme
-      ),
+      theme: MyTheme.lightTheme(context),
+      darkTheme: MyTheme.darkTheme(context),
+      initialRoute: '/', // Now LoginPage is the default
       debugShowCheckedModeBanner: false, // Remove debug banner
-
-      darkTheme: ThemeData(brightness: Brightness.light),
       routes: {
         '/': (context) => const LoginPage(),
         MyRoutes.HomeRoute: (context) => const HomePage(),
