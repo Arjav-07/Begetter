@@ -12,19 +12,19 @@ class MyDrawer extends StatelessWidget {
       child: Container(
         color: Colors.deepPurple,
         child: ListView(
-          children: [
+          children: const [
             DrawerHeader(
               padding: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
                 margin: EdgeInsets.zero,
-                accountName: const Text("ARJAV BHISARA"),
-                accountEmail: const Text("arjavbhisara07@gmail.com"),
+                accountName: Text("ARJAV BHISARA"),
+                accountEmail: Text("arjavbhisara07@gmail.com"),
                 currentAccountPicture: CircleAvatar(
                   backgroundImage: NetworkImage(imageUrl),
                 ),
               ),
             ),
-            const ListTile(
+            ListTile(
               leading: Icon(
                 CupertinoIcons.home,
                 color: Colors.white,
@@ -35,7 +35,7 @@ class MyDrawer extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
             ),
-            const ListTile(
+            ListTile(
               leading: Icon(
                 CupertinoIcons.profile_circled,
                 color: Colors.white,
@@ -46,7 +46,7 @@ class MyDrawer extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
             ),
-            const ListTile(
+            ListTile(
               leading: Icon(
                 CupertinoIcons.mail,
                 color: Colors.white,

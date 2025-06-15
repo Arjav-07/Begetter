@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/', // Now LoginPage is the default
       debugShowCheckedModeBanner: false, // Remove debug banner
       routes: {
-        '/': (context) => const LoginPage(),
+        '/': (context) => const HomePage(),
         MyRoutes.HomeRoute: (context) => const HomePage(),
         MyRoutes.loginRoute: (context) => const LoginPage(),
       },

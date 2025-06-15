@@ -14,6 +14,6 @@ class MyTheme {
       );
 
   static ThemeData darkTheme(BuildContext context) => ThemeData(
-        brightness: Brightness.dark,
+        brightness: Brightness.light,
       );
 }
