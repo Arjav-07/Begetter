@@ -1,15 +1,5 @@
 class CatalogModel {
-  static final items = [
-    Item(
-      id: "Prdt001",
-      name: "iPhone 14 Pro",
-      description: "Apple iPhone 14 Pro (128GB) - Space Black",
-      price: 1100.0,
-      colour: "Space Black",
-      imageUrl:
-          "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1662702896/Croma%20Assets/Communication/Mobiles/Images/261960_hxm0e3.png?tr=w-600",
-    ),
-  ]; // <-- Added missing semicolon
+  static List<Item> items = [];
 }
 
 class Item {
@@ -18,14 +8,34 @@ class Item {
   final String description;
   final String imageUrl;
   final double price;
-  final String colour;
+  final String color;
 
   Item({
     required this.id,
     required this.name,
     required this.description,
     required this.imageUrl,
-    required this.price, // <-- Fixed this line
-    required this.colour,
+    required this.price,
+    required this.color,
   });
+
+  factory Item.fromMap(Map<String, dynamic> map) {
+    return Item(
+      id: map['id'].toString(),
+      name: map['name'],
+      description: map['description'],
+      imageUrl: map['imageUrl'],
+      price: (map['price'] as num).toDouble(),
+      color: map['color'],
+    );
+  }
+
+  Map<String, dynamic> toMap() => {
+        "id": id,
+        "name": name,
+        "description": description,
+        "imageUrl": imageUrl,
+        "price": price,
+        "color": color,
+      };
 }

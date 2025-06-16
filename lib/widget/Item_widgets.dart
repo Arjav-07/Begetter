@@ -7,7 +7,7 @@ class ItemWidget extends StatelessWidget {
   const ItemWidget({
     super.key,
     required this.item,
-  }) : assert(item != null);
+  });
 
   @override
   Widget build(BuildContext context) {

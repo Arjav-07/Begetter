@@ -1,0 +1,68 @@
+{
+    "products": [
+        {
+            "id": "1",
+            "name": "Iphone 14 pro ",
+            "description": "Apple iphone 14th generation.",
+            "price": 999.99,
+            "color": "Silver",
+            "imageUrl": "https://iplanet.one/cdn/shop/files/iPhone_14_Pro_Deep_Purple_PDP_Image_Position-1a__WWEN_84a81709-e3c4-4452-b39c-18e35ace6f76.jpg?v=1691140977"
+        },
+        {
+            "id": "2",
+            "name": "Samsung Galaxy S21",
+            "description": "Latest model smartphone .",
+            "price": 499.99,
+            "color": "Black",
+            "imageUrl": "https://igalaxy.nl/cdn/shop/files/samsung-galaxy-s21-ultra_600x600_BGresize_16777215-tj.png?v=1718277326"
+        },
+        {
+            "id": "3",
+            "name": "Apple MacBook M4",
+            "description": "Latest gen slim apple laptop.",
+            "price": 199.99,
+            "color": "Black",
+            "imageUrl": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=892&hei=820&fmt=jpeg&qlt=90&.v=YnlWZDdpMFo0bUpJZnBpZjhKM2M3VGhTSEZFNjlmT2xUUDNBTjljV1BxWjZkZE52THZKR1lubXJyYmRyWWlhOXZvdUZlR0V0VUdJSjBWaDVNVG95Yk15Y0c3T3Y4UWZwZExHUFdTUC9lN28"
+        },
+        {
+            "id": "4",
+            "name": "Sony PlayStation 5",
+            "description": "Next-gen gaming console.",
+            "price": 499.99,
+            "color": "White",
+            "imageUrl": "https://m.media-amazon.com/images/I/51lVhQLZn+L.jpg"
+        },
+        {
+            "id": "5",
+            "name": "Airpods Pro 2",
+            "description": " Latest generation wireless earbuds.",
+            "price": 499.99,
+            "color": "White",
+            "imageUrl": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-pro-2-hero-select-202409_FMT_WHH?wid=750&hei=556&fmt=jpeg&qlt=90&.v=1724041668836"
+        },
+        {
+            "id": "6",
+            "name": "Apple Ipad Pro",
+            "description": "Latest generation tablet.",
+            "price": 399.99,
+            "color": "Silver",
+            "imageUrl": "https://suprememobiles.in/cdn/shop/files/1_86d839b9-8af3-4823-8d67-824130ff6065.png?v=1700831789"
+        },
+        {
+            "id": "7",
+            "name": "Apple iphone 16 Pro",
+            "description": "Apple's latest flagship smartphone.",
+            "price": 1299.99,
+            "color": "Silver",
+            "imageUrl": "https://m.media-amazon.com/images/I/61JvFLHZ6NL.jpg"
+        },
+        {
+            "id": "8",
+            "name": "Samsung Galaxy S24 Ultra",
+            "description": "Latest Samsung flagship smartphone.",
+            "price": 1199.99,
+            "color": "Titanium Gray",
+            "imageUrl": "https://rukminim2.flixcart.com/image/850/1000/xif0q/mobile/5/e/h/-original-imah8pdna7nzdqxg.jpeg?q=90&crop=false"
+        }
+    ]
+}
