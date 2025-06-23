@@ -1,5 +1,6 @@
-import 'package:begetter/pages/login_page.dart';
+import 'package:begetter/pages/home_detail_page.dart';
 import 'package:begetter/pages/home_page.dart';
+import 'package:begetter/pages/login_page.dart';
 import 'package:begetter/widget/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:begetter/utils/routes.dart';
@@ -20,8 +21,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/', // Now LoginPage is the default
       debugShowCheckedModeBanner: false, // Remove debug banner
       routes: {
-        '/': (context) => const HomePage(),
-        MyRoutes.HomeRoute: (context) => const HomePage(),
+        '/': (context) => HomePage(),
+        MyRoutes.HomeRoute: (context) => HomePage(),
         MyRoutes.loginRoute: (context) => const LoginPage(),
       },
     );
