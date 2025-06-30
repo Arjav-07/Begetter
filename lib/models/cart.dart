@@ -4,6 +4,14 @@ class CartModel {
   // catalog field
   late CatalogModel _catalog;
 
+  static final CartModel _instance = CartModel._internal();
+
+  CartModel._internal();
+
+  factory CartModel() {
+    return _instance;
+  }
+
   // Collection of IDs - store Ids of each item
   final List<int> _itemIds = [];
 

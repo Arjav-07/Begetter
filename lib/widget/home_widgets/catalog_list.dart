@@ -1,3 +1,4 @@
+import 'package:begetter/models/cart.dart';
 import 'package:begetter/models/catalog.dart';
 import 'package:begetter/pages/home_detail_page.dart';
 // Ensure that 'lib/pages/home_detail_page.dart' exists and contains:
@@ -77,21 +78,9 @@ class CatalogItem extends StatelessWidget {
                       .bold
                       .size(18)
                       .make(),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                            Theme.of(context)
-                                    .elevatedButtonTheme
-                                    .style
-                                    ?.backgroundColor
-                                    ?.resolve({}) ??
-                                MyTheme.lightBluishColor),
-                        shape: MaterialStateProperty.all(
-                          StadiumBorder(),
-                        )),
-                    child: "Add to Cart".text.white.make(),
-                  ).wh(130, 40),
+                  _AddToCart(
+                    catalog: catalog,
+                  ),
                 ],
               ).pOnly(right: 16.0)
             ],
@@ -99,5 +88,50 @@ class CatalogItem extends StatelessWidget {
         ],
       ),
     ).color(context.cardColor).rounded.square(150).make().py16();
+  }
+}
+
+class _AddToCart extends StatefulWidget {
+  final Item catalog;
+  const _AddToCart({
+    Key? key,
+    required this.catalog,
+  }) : super(key: key);
+
+  @override
+  __AddToCartState createState() => __AddToCartState();
+}
+
+bool isAdded = false; // Global state to track cart addition
+
+class __AddToCartState extends State<_AddToCart> {
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        isAdded = isAdded.toggle();
+        final _catalog = CatalogModel();
+        final _cart = CartModel();
+        _cart.catalog = _catalog; // Set the catalog for the cart
+        _cart.add(widget.catalog);
+        setState(() {}); // Toggle the state
+      },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Theme.of(context)
+                .elevatedButtonTheme
+                .style
+                ?.backgroundColor
+                ?.resolve({}) ??
+            MyTheme.lightBluishColor,
+        shape: const StadiumBorder(),
+        foregroundColor: Colors.white,
+        textStyle: const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 16,
+        ),
+      ),
+      child: isAdded ? Icon(Icons.done) : Text("Add to Cart"),
+    ).wh(130, 40);
   }
 }

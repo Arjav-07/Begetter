@@ -3,6 +3,12 @@ import 'package:begetter/models/catalog.dart';
 class CatalogModel {
   static List<Item> items = [];
 
+  static final CatModel = CatalogModel._internal();
+
+  CatalogModel._internal();
+
+  factory CatalogModel() => CatModel;
+
   // Get the item by ID
   Item? getById(int id) {
     return items.firstWhere(
