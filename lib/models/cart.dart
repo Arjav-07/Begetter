@@ -1,16 +1,14 @@
 import 'package:begetter/models/catalog.dart';
 
 class CartModel {
-  // catalog field
-  late CatalogModel _catalog;
-
-  static final CartModel _instance = CartModel._internal();
+  static final cartModel = CartModel._internal();
 
   CartModel._internal();
 
-  factory CartModel() {
-    return _instance;
-  }
+  factory CartModel() => cartModel;
+
+  // catalog field
+  late CatalogModel _catalog;
 
   // Collection of IDs - store Ids of each item
   final List<int> _itemIds = [];
@@ -34,7 +32,7 @@ class CartModel {
   // Add Item
 
   void add(Item item) {
-    _itemIds.add(int.parse(item.id));
+    _itemIds.add(int.parse(item.id.toString()));
   }
 
   // Remove Item

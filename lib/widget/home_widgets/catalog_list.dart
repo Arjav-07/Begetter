@@ -105,6 +105,8 @@ class _AddToCart extends StatefulWidget {
 bool isAdded = false; // Global state to track cart addition
 
 class __AddToCartState extends State<_AddToCart> {
+  bool isAdded = false;
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -112,26 +114,17 @@ class __AddToCartState extends State<_AddToCart> {
         isAdded = isAdded.toggle();
         final _catalog = CatalogModel();
         final _cart = CartModel();
-        _cart.catalog = _catalog; // Set the catalog for the cart
+        _cart.catalog = _catalog;
         _cart.add(widget.catalog);
-        setState(() {}); // Toggle the state
+        setState(() {});
       },
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Theme.of(context)
-                .elevatedButtonTheme
-                .style
-                ?.backgroundColor
-                ?.resolve({}) ??
-            MyTheme.lightBluishColor,
-        shape: const StadiumBorder(),
-        foregroundColor: Colors.white,
-        textStyle: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          fontSize: 16,
-        ),
-      ),
-      child: isAdded ? Icon(Icons.done) : Text("Add to Cart"),
-    ).wh(130, 40);
+      style: ButtonStyle(
+          backgroundColor:
+              MaterialStateProperty.all(context.theme.colorScheme.secondary),
+          shape: MaterialStateProperty.all(
+            StadiumBorder(),
+          )),
+      child: isAdded ? Icon(Icons.done) : "Add to cart".text.make(),
+    );
   }
 }

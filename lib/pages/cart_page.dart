@@ -45,8 +45,8 @@ class _CartTotal extends StatelessWidget {
             },
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(context
-                    .theme.elevatedButtonTheme.style!.backgroundColor!
-                    .resolve({}))),
+                    .theme.elevatedButtonTheme.style?.backgroundColor
+                    ?.resolve({}))),
             child: "Buy".text.white.make(),
           ).w32(context)
         ],
@@ -65,7 +65,7 @@ class __CartListState extends State<_CartList> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: _cart.items.length,
+      itemCount: _cart.items?.length,
       itemBuilder: (context, index) => ListTile(
         leading: Icon(Icons.done),
         trailing: IconButton(
