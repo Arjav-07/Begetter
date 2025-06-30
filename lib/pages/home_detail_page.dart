@@ -1,11 +1,5 @@
 import 'package:begetter/models/catalog.dart';
-import 'package:begetter/widget/home_widgets/catalog_header.dart';
-import 'package:begetter/widget/home_widgets/catalog_list.dart';
-import 'package:begetter/widget/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'dart:convert';
-
 import 'package:velocity_x/velocity_x.dart';
 
 class HomeDetailPage extends StatefulWidget {
@@ -13,38 +7,31 @@ class HomeDetailPage extends StatefulWidget {
   HomeDetailPage({Key? key, required this.catalog}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomeDetailPageState createState() => _HomeDetailPageState();
 }
 
-class _HomePageState extends State<HomeDetailPage> {
-  final int days = 30;
-
-  final String name = "Codepur";
-  Item get catalog => widget.catalog;
-
+class _HomeDetailPageState extends State<HomeDetailPage> {
   @override
   Widget build(BuildContext context) {
+    final catalog = widget.catalog;
     return Scaffold(
-      appBar: AppBar(),
-      backgroundColor: MyTheme.creamColor,
+      appBar: AppBar(backgroundColor: Colors.transparent),
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
           children: [
-            "\$${catalog.price}".text.bold.xl4.red800.make(),
+            "\$${catalog.price}".text.bold.xl2.red800.make(),
             ElevatedButton(
               onPressed: () {},
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
-                    MyTheme.darkBluishColor,
-                  ),
-                  shape: MaterialStateProperty.all(
-                    StadiumBorder(),
-                  )),
-              child: "Buy".text.white.make(),
-            ).wh(100, 50)
+                      context.theme.colorScheme.secondary),
+                  shape: MaterialStateProperty.all(StadiumBorder())),
+              child: "Add to cart".text.white.make(),
+            ).wh(120, 50)
           ],
         ).p32(),
       ),
@@ -62,19 +49,26 @@ class _HomePageState extends State<HomeDetailPage> {
               arcType: VxArcType.convey,
               edge: VxEdge.top,
               child: Container(
-                color: Colors.white,
+                color: context.cardColor,
                 width: context.screenWidth,
                 child: Column(
                   children: [
                     catalog.name.text.xl4
-                        .color(MyTheme.darkBluishColor)
+                        .color(Theme.of(context).colorScheme.primary)
                         .bold
                         .make(),
                     catalog.description.text
+                        .color(Theme.of(context).colorScheme.tertiary)
                         .textStyle(context.captionStyle)
                         .xl
                         .make(),
                     10.heightBox,
+                    "Dolor sea takimata ipsum sea eirmod aliquyam est. Eos ipsum voluptua eirmod elitr, no dolor dolor amet eirmod dolor labore dolores magna. Amet vero vero vero kasd, dolore sea sed sit invidunt nonumy est sit clita. Diam aliquyam amet tempor diam no aliquyam invidunt. Elitr lorem eirmod dolore clita. Rebum."
+                        .text
+                        .color(Theme.of(context).colorScheme.tertiary)
+                        .textStyle(context.captionStyle)
+                        .make()
+                        .p32()
                   ],
                 ).py64(),
               ),

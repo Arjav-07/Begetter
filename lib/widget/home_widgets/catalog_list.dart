@@ -1,6 +1,5 @@
 import 'package:begetter/models/catalog.dart';
 import 'package:begetter/pages/home_detail_page.dart';
-import 'package:begetter/pages/home_page.dart';
 // Ensure that 'lib/pages/home_detail_page.dart' exists and contains:
 // class HomeDetailPage extends StatelessWidget { ... }
 import 'package:begetter/widget/home_widgets/catalog_image.dart';
@@ -15,8 +14,12 @@ class CatalogList extends StatelessWidget {
       shrinkWrap: true,
       itemCount: CatalogModel.items.length,
       itemBuilder: (context, index) {
-        final catalog = CatalogModel.items[index];
+        final catalog = CatalogModel.getByPosition(index);
         return InkWell(
+          borderRadius: BorderRadius.circular(10),
+          hoverColor: Colors.transparent, // No hover effect
+          splashColor: Colors.transparent, // No splash on click
+          highlightColor: Colors.transparent, // No highlight on tap down
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute(
@@ -55,31 +58,46 @@ class CatalogItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              catalog.name.text.lg.color(MyTheme.darkBluishColor).bold.make(),
-              catalog.description.text.textStyle(context.captionStyle).make(),
+              catalog.name.text.lg
+                  .color(Theme.of(context).colorScheme.primary)
+                  .bold
+                  .make(),
+              catalog.description.text
+                  .color(Theme.of(context).colorScheme.tertiary)
+                  .textStyle(context.captionStyle)
+                  .make(),
               10.heightBox,
               ButtonBar(
                 alignment: MainAxisAlignment.spaceBetween,
                 buttonPadding: EdgeInsets.zero,
                 children: [
-                  "\$${catalog.price}".text.bold.xl.make(),
+                  "\$${catalog.price}"
+                      .text
+                      .color(Theme.of(context).colorScheme.primary)
+                      .bold
+                      .size(18)
+                      .make(),
                   ElevatedButton(
                     onPressed: () {},
                     style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                          MyTheme.darkBluishColor,
-                        ),
+                            Theme.of(context)
+                                    .elevatedButtonTheme
+                                    .style
+                                    ?.backgroundColor
+                                    ?.resolve({}) ??
+                                MyTheme.lightBluishColor),
                         shape: MaterialStateProperty.all(
                           StadiumBorder(),
                         )),
-                    child: "Buy".text.white.make(),
-                  )
+                    child: "Add to Cart".text.white.make(),
+                  ).wh(130, 40),
                 ],
-              ).pOnly(right: 8.0)
+              ).pOnly(right: 16.0)
             ],
           ))
         ],
       ),
-    ).white.rounded.square(150).make().py16();
+    ).color(context.cardColor).rounded.square(150).make().py16();
   }
 }

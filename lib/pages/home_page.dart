@@ -1,11 +1,13 @@
 import 'dart:math';
 
 import 'package:begetter/models/catalog.dart';
+import 'package:begetter/utils/routes.dart';
 import 'package:begetter/widget/home_widgets/catalog_header.dart';
 import 'package:begetter/widget/home_widgets/catalog_list.dart';
 import 'package:begetter/widget/Item_widgets.dart';
 import 'package:begetter/widget/drawer.dart';
 import 'package:begetter/widget/themes.dart';
+import 'package:flutter/cupertino.dart';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -42,7 +44,19 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: MyTheme.creamColor,
+        backgroundColor: context.canvasColor,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+          backgroundColor: Theme.of(context)
+              .elevatedButtonTheme
+              .style
+              ?.backgroundColor
+              ?.resolve({}),
+          child: const Icon(
+            CupertinoIcons.cart,
+            color: Colors.white,
+          ),
+        ),
         body: SafeArea(
           child: Container(
             padding: Vx.m32,

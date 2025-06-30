@@ -1,3 +1,4 @@
+import 'package:begetter/pages/cart_page.dart';
 import 'package:begetter/pages/home_detail_page.dart';
 import 'package:begetter/pages/home_page.dart';
 import 'package:begetter/pages/login_page.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => HomePage(),
         MyRoutes.HomeRoute: (context) => HomePage(),
         MyRoutes.loginRoute: (context) => const LoginPage(),
+        MyRoutes.cartRoute: (context) => CartPage(),
       },
     );
   }

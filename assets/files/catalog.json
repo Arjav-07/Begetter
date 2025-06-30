@@ -6,7 +6,7 @@
             "description": "Apple iphone 14th generation.",
             "price": 999.99,
             "color": "Silver",
-            "imageUrl": "https://iplanet.one/cdn/shop/files/iPhone_14_Pro_Deep_Purple_PDP_Image_Position-1a__WWEN_84a81709-e3c4-4452-b39c-18e35ace6f76.jpg?v=1691140977"
+            "imageUrl": "assets/images/iphone.png"
         },
         {
             "id": "2",
@@ -14,7 +14,7 @@
             "description": "Latest model smartphone .",
             "price": 499.99,
             "color": "Black",
-            "imageUrl": "https://igalaxy.nl/cdn/shop/files/samsung-galaxy-s21-ultra_600x600_BGresize_16777215-tj.png?v=1718277326"
+            "imageUrl": "assets/images/s21.png"
         },
         {
             "id": "3",
@@ -22,7 +22,7 @@
             "description": "Latest gen slim apple laptop.",
             "price": 199.99,
             "color": "Black",
-            "imageUrl": "https://m.media-amazon.com/images/I/61eA9PkZ07L._SX466_.jpg"
+            "imageUrl": "assets/images/mac.png"
         },
         {
             "id": "4",
@@ -30,7 +30,7 @@
             "description": "Next-gen gaming console.",
             "price": 499.99,
             "color": "White",
-            "imageUrl": "https://m.media-amazon.com/images/I/41c+1Roq2aL._SL1000_.jpg"
+            "imageUrl": "assets/images/ps5.png"
         },
         {
             "id": "5",
@@ -38,7 +38,7 @@
             "description": " Latest generation wireless earbuds.",
             "price": 499.99,
             "color": "White",
-            "imageUrl": "https://m.media-amazon.com/images/I/31GYay3meDL._SY445_SX342_QL70_FMwebp_.jpg"
+            "imageUrl": "assets/images/earpod.png"
         },
         {
             "id": "6",
@@ -46,7 +46,7 @@
             "description": "Latest generation tablet.",
             "price": 399.99,
             "color": "Silver",
-            "imageUrl": "https://suprememobiles.in/cdn/shop/files/1_86d839b9-8af3-4823-8d67-824130ff6065.png?v=1700831789"
+            "imageUrl": "assets/images/ipad.png"
         },
         {
             "id": "7",
@@ -54,7 +54,7 @@
             "description": "Apple's latest flagship smartphone.",
             "price": 1299.99,
             "color": "Silver",
-            "imageUrl": "https://m.media-amazon.com/images/I/61JvFLHZ6NL.jpg"
+            "imageUrl": "assets/images/iphone16.png"
         },
         {
             "id": "8",
@@ -62,7 +62,7 @@
             "description": "Latest Samsung flagship smartphone.",
             "price": 1199.99,
             "color": "Titanium Gray",
-            "imageUrl": "https://rukminim2.flixcart.com/image/850/1000/xif0q/mobile/5/e/h/-original-imah8pdna7nzdqxg.jpeg?q=90&crop=false"
+            "imageUrl": "assets/images/s24.png"
         }
     ]
 }
