@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class AddToCart extends StatefulWidget {
+class AddToCart extends StatelessWidget {
   final Item catalog;
   const AddToCart({
     Key? key,
@@ -12,29 +12,19 @@ class AddToCart extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _AddToCartState createState() => _AddToCartState();
-}
-
-class _AddToCartState extends State<AddToCart> {
-  bool isAdded = false;
-
-  @override
   Widget build(BuildContext context) {
     final _cart = CartModel();
     final _catalog = CatalogModel();
     _cart.catalog = _catalog;
 
-    bool isInCart = _cart.items.contains(widget.catalog);
+    bool isInCart = _cart.items.contains(catalog);
 
-    // ...existing code...
     return ElevatedButton(
-      onPressed: isInCart || isAdded
+      onPressed: isInCart
           ? null
           : () {
-              _cart.add(widget.catalog);
-              setState(() {
-                isAdded = true;
-              });
+              _cart.add(catalog);
+              // No setState here, so UI will update only if parent rebuilds
             },
       style: ButtonStyle(
         backgroundColor:
@@ -42,10 +32,11 @@ class _AddToCartState extends State<AddToCart> {
         shape: MaterialStateProperty.all(
           StadiumBorder(),
         ),
-        foregroundColor: MaterialStateProperty.all(
-            Colors.white), // Ensures icon/text is white
+        foregroundColor: MaterialStateProperty.all(Colors.white),
       ),
-      child: isInCart ? Icon(Icons.done) : Icon(CupertinoIcons.cart_badge_plus),
+      child: isInCart
+          ? const Icon(Icons.done, color: Colors.white)
+          : const Icon(CupertinoIcons.cart_badge_plus, color: Colors.white),
     );
   }
 }

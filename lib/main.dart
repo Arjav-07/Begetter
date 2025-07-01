@@ -5,9 +5,12 @@ import 'package:begetter/pages/login_page.dart';
 import 'package:begetter/widget/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:begetter/utils/routes.dart';
+import 'package:velocity_x/velocity_x.dart';
+
+class MyStore extends VxStore {}
 
 void main() {
-  runApp(const MyApp());
+  runApp(VxState(store: MyStore(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
