@@ -1,4 +1,5 @@
 import 'package:begetter/models/catalog.dart';
+import 'package:begetter/widget/home_widgets/add_to_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -24,14 +25,9 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
           buttonPadding: EdgeInsets.zero,
           children: [
             "\$${catalog.price}".text.bold.xl2.red800.make(),
-            ElevatedButton(
-              onPressed: () {},
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(
-                      context.theme.colorScheme.secondary),
-                  shape: MaterialStateProperty.all(StadiumBorder())),
-              child: "Add to cart".text.white.make(),
-            ).wh(120, 50)
+            AddToCart(
+              catalog: catalog,
+            ).wh(130, 40), // Use the same button as in catalog list
           ],
         ).p32(),
       ),

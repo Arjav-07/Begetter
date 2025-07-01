@@ -52,6 +52,7 @@ class _HomePageState extends State<HomePage> {
               .style
               ?.backgroundColor
               ?.resolve({}),
+          shape: const CircleBorder(), // <-- Make button circular
           child: const Icon(
             CupertinoIcons.cart,
             color: Colors.white,

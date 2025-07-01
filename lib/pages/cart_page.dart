@@ -13,7 +13,7 @@ class CartPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          _CartList().p32().expand(),
+          Expanded(child: _CartList().p32()), // Use Expanded here
           Divider(),
           _CartTotal(),
         ],
@@ -44,9 +44,12 @@ class _CartTotal extends StatelessWidget {
               ));
             },
             style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(context
-                    .theme.elevatedButtonTheme.style?.backgroundColor
-                    ?.resolve({}))),
+                backgroundColor: MaterialStateProperty.all(Theme.of(context)
+                        .elevatedButtonTheme
+                        .style
+                        ?.backgroundColor
+                        ?.resolve({}) ??
+                    context.theme.colorScheme.secondary)),
             child: "Buy".text.white.make(),
           ).w32(context)
         ],
@@ -64,16 +67,21 @@ class __CartListState extends State<_CartList> {
   final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: _cart.items?.length,
-      itemBuilder: (context, index) => ListTile(
-        leading: Icon(Icons.done),
-        trailing: IconButton(
-          icon: Icon(Icons.remove_circle_outline),
-          onPressed: () {},
-        ),
-        title: _cart.items[index].name.text.make(),
-      ),
-    );
+    return _cart.items.isEmpty
+        ? "Nothing to show".text.xl3.makeCentered()
+        : ListView.builder(
+            itemCount: _cart.items.length,
+            itemBuilder: (context, index) => ListTile(
+              leading: Icon(Icons.done),
+              trailing: IconButton(
+                icon: Icon(Icons.remove_circle_outline),
+                onPressed: () {
+                  _cart.remove(_cart.items[index]);
+                  setState(() {});
+                },
+              ),
+              title: _cart.items[index].name.text.make(),
+            ),
+          );
   }
 }

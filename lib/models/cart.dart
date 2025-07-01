@@ -30,14 +30,13 @@ class CartModel {
       items.fold(0, (total, current) => total + current.price);
 
   // Add Item
-
   void add(Item item) {
     _itemIds.add(int.parse(item.id.toString()));
   }
 
   // Remove Item
-
   void remove(Item item) {
-    _itemIds.remove(item.id);
+    _itemIds.remove(int.parse(
+        item.id.toString())); // Fix: convert id to int before removing
   }
 }
