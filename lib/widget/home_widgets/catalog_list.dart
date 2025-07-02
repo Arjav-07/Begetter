@@ -1,9 +1,7 @@
-import 'package:begetter/models/cart.dart';
 import 'package:begetter/models/catalog.dart';
 import 'package:begetter/pages/home_detail_page.dart';
 import 'package:begetter/widget/home_widgets/add_to_cart.dart';
 import 'package:begetter/widget/home_widgets/catalog_image.dart';
-import 'package:begetter/widget/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -16,10 +14,6 @@ class CatalogList extends StatelessWidget {
       itemBuilder: (context, index) {
         final catalog = CatalogModel.items[index];
         return InkWell(
-          borderRadius: BorderRadius.circular(10),
-          hoverColor: Colors.transparent,
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute(
@@ -38,9 +32,7 @@ class CatalogList extends StatelessWidget {
 class CatalogItem extends StatelessWidget {
   final Item catalog;
 
-  const CatalogItem({Key? key, required this.catalog})
-      : assert(catalog != null),
-        super(key: key);
+  const CatalogItem({Key? key, required this.catalog}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
