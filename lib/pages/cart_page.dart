@@ -81,22 +81,69 @@ class _CartList extends StatelessWidget {
     final CartModel cart = (VxState.store as MyStore).cart;
 
     return VxBuilder(
-      mutations: {RemoveMutation},
+      mutations: {AddMutation, RemoveMutation},
       builder: (context, _, __) {
         return cart.items.isEmpty
             ? "Nothing to show".text.xl3.makeCentered()
             : ListView.builder(
                 itemCount: cart.items.length,
-                itemBuilder: (context, index) => ListTile(
-                  leading: const Icon(Icons.done),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.remove_circle_outline),
-                    onPressed: () {
-                      RemoveMutation(cart.items[index]);
-                    },
-                  ),
-                  title: cart.items[index].name.text.make(),
-                ),
+                itemBuilder: (context, index) {
+                  final item = cart.items[index];
+                  final qty = cart.getQuantity(item);
+                  return Card(
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    elevation: 0, // <-- Remove shadow
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      // Replace this inside your itemBuilder:
+                      child: Row(
+                        children: [
+                          // Remove CircleAvatar and use a plain image with rounded corners
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.network(
+                              item.imageUrl,
+                              width: 56,
+                              height: 56,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          16.widthBox,
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                item.name.text.lg.bold.make(),
+                                "Quantity: $qty".text.make(),
+                                "\$${item.price}"
+                                    .text
+                                    .color(context.theme.colorScheme.primary)
+                                    .make(),
+                              ],
+                            ),
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.remove),
+                            onPressed: () {
+                              RemoveMutation(item);
+                            },
+                          ),
+                          Text('$qty'),
+                          IconButton(
+                            icon: const Icon(Icons.add),
+                            onPressed: () {
+                              AddMutation(item);
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
               );
       },
     );

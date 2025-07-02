@@ -22,6 +22,9 @@ class CatalogList extends StatelessWidget {
               ),
             ),
           ),
+          hoverColor: Colors.transparent, // <-- transparent hover
+          splashColor: Colors.transparent, // <-- transparent splash
+          highlightColor: Colors.transparent, // <-- transparent highlight
           child: CatalogItem(catalog: catalog),
         );
       },

@@ -6,8 +6,8 @@ class CartModel {
   // Reference to the catalog
   late CatalogModel _catalog;
 
-  // Store list of item IDs (as Strings)
-  final List<String> _itemIds = [];
+  // Store item quantities: key = item id (String), value = quantity
+  final Map<String, int> _itemQuantities = {};
 
   // Getter for catalog
   CatalogModel get catalog => _catalog;
@@ -16,23 +16,33 @@ class CartModel {
   set catalog(CatalogModel newCatalog) => _catalog = newCatalog;
 
   // Return all items in the cart using IDs
-  List<Item> get items => _itemIds
+  List<Item> get items => _itemQuantities.keys
       .map((id) => _catalog.getById(int.parse(id)))
-      .whereType<Item>() // Filters out any nulls
+      .whereType<Item>()
       .toList();
 
-  // Total price of cart items
-  num get totalPrice =>
-      items.fold(0, (total, current) => total + current.price);
+  // Get quantity for an item
+  int getQuantity(Item item) => _itemQuantities[item.id] ?? 0;
 
-  // Add item to cart
+  // Total price of cart items
+  num get totalPrice => _itemQuantities.entries.fold(
+      0,
+      (total, entry) =>
+          total + (_catalog.getById(int.parse(entry.key)).price) * entry.value);
+
+  // Add item to cart (increase quantity)
   void add(Item item) {
-    _itemIds.add(item.id);
+    _itemQuantities[item.id] = getQuantity(item) + 1;
   }
 
-  // Remove item from cart
+  // Remove item from cart (decrease quantity or remove)
   void remove(Item item) {
-    _itemIds.remove(item.id);
+    final qty = getQuantity(item);
+    if (qty > 1) {
+      _itemQuantities[item.id] = qty - 1;
+    } else {
+      _itemQuantities.remove(item.id);
+    }
   }
 }
 
@@ -41,7 +51,7 @@ class AddMutation extends VxMutation<MyStore> {
   AddMutation(this.item);
 
   @override
-  perform() => store?.cart.add(item);
+  perform() => store!.cart.add(item);
 }
 
 class RemoveMutation extends VxMutation<MyStore> {
@@ -49,5 +59,5 @@ class RemoveMutation extends VxMutation<MyStore> {
   RemoveMutation(this.item);
 
   @override
-  perform() => store?.cart.remove(item);
+  perform() => store!.cart.remove(item);
 }
