@@ -1,6 +1,6 @@
+import 'package:begetter/core/store.dart';
 import 'package:begetter/models/catalog.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:begetter/main.dart';
 
 class CartModel {
   // Reference to the catalog
@@ -23,6 +23,9 @@ class CartModel {
 
   // Get quantity for an item
   int getQuantity(Item item) => _itemQuantities[item.id] ?? 0;
+
+  // Total number of items in cart (sum of quantities)
+  int get totalItems => _itemQuantities.values.fold(0, (sum, qty) => sum + qty);
 
   // Total price of cart items
   num get totalPrice => _itemQuantities.entries.fold(

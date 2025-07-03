@@ -5,14 +5,15 @@ import 'package:velocity_x/velocity_x.dart';
 class MyTheme {
   static ThemeData lightTheme(BuildContext context) => ThemeData(
         brightness: Brightness.light,
-        fontFamily: GoogleFonts.poppins().fontFamily,
+        fontFamily:
+            GoogleFonts.poppins().fontFamily, // Use Poppins as the font family
         cardColor: Colors.white,
         canvasColor: creamColor,
         colorScheme: ColorScheme.fromSwatch(
                 primarySwatch: Colors.deepPurple, brightness: Brightness.light)
             .copyWith(
           primary: darkBluishColor,
-          secondary: darkBluishColor, // Changed to a more suitable color
+          secondary: darkBluishColor,
           tertiary: Colors.grey,
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
@@ -26,21 +27,21 @@ class MyTheme {
           elevation: 0.0,
           iconTheme: IconThemeData(color: Colors.black),
         ),
-        textTheme: GoogleFonts.latoTextTheme(
-          ThemeData.light().textTheme,
-        ),
+        textTheme: GoogleFonts.poppinsTextTheme(
+            ThemeData.light().textTheme), // Set text theme to Poppins
       );
 
   static ThemeData darkTheme(BuildContext context) => ThemeData(
         brightness: Brightness.dark,
-        fontFamily: GoogleFonts.poppins().fontFamily,
+        fontFamily:
+            GoogleFonts.poppins().fontFamily, // Use Poppins as the font family
         cardColor: Colors.black,
         canvasColor: darkCreamColor,
         colorScheme: ColorScheme.fromSwatch(
                 primarySwatch: Colors.deepPurple, brightness: Brightness.dark)
             .copyWith(
           primary: Colors.white,
-          secondary: lightBluishColor, // Changed to a
+          secondary: lightBluishColor,
           tertiary: Colors.grey,
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
@@ -52,7 +53,8 @@ class MyTheme {
           elevation: 0.0,
           iconTheme: IconThemeData(color: Colors.white),
         ),
-        textTheme: GoogleFonts.latoTextTheme(),
+        textTheme: GoogleFonts.poppinsTextTheme(
+            ThemeData.light().textTheme), // Set text theme to Poppins
       );
 
   // Colors
