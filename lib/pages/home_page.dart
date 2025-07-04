@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
       if (response.statusCode == 200) {
         final catalogJson = response.body;
         final decodedData = jsonDecode(catalogJson);
-        var productsData = decodedData["record"]["products"]; // fixed
+        var productsData = decodedData["record"]["products"];
         CatalogModel.items = List.from(productsData)
             .map<Item>((item) => Item.fromMap(item))
             .toList();
@@ -70,10 +70,10 @@ class _HomePageState extends State<HomePage> {
           ).badge(
             color: Vx.gray200,
             size: 20,
-            count: _cart.totalItems, // <-- FIXED here
+            count: _cart.totalItems,
             textStyle: const TextStyle(
               color: Colors.black,
-              fontWeight: FontWeight.normal,
+              fontWeight: FontWeight.bold,
             ),
           );
         },

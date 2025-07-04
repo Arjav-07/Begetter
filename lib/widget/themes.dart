@@ -35,7 +35,7 @@ class MyTheme {
         brightness: Brightness.dark,
         fontFamily:
             GoogleFonts.poppins().fontFamily, // Use Poppins as the font family
-        cardColor: Colors.black,
+        cardColor: const Color.fromARGB(255, 8, 8, 8),
         canvasColor: darkCreamColor,
         colorScheme: ColorScheme.fromSwatch(
                 primarySwatch: Colors.deepPurple, brightness: Brightness.dark)
@@ -43,6 +43,7 @@ class MyTheme {
           primary: Colors.white,
           secondary: lightBluishColor,
           tertiary: Colors.grey,
+          tertiaryContainer: tblue,
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
@@ -62,4 +63,5 @@ class MyTheme {
   static Color darkCreamColor = Vx.gray900;
   static Color darkBluishColor = const Color(0xff403b58);
   static Color lightBluishColor = Vx.indigo500;
+  static Color tblue = const Color.fromARGB(255, 45, 46, 87);
 }

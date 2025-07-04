@@ -10,14 +10,23 @@ class CartPage extends StatelessWidget {
       backgroundColor: context.canvasColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: "Cart".text.make(),
+        elevation: 0,
+        title: "My Cart"
+            .text
+            .xl2
+            .bold
+            .color(context.theme.colorScheme.primary)
+            .make(),
       ),
-      body: Column(
-        children: [
-          const _CartList().p32().expand(),
-          const Divider(),
-          _CartTotal(),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+        child: Column(
+          children: [
+            const _CartList().expand(),
+            const Divider(),
+            _CartTotal(),
+          ],
+        ),
       ),
     );
   }
@@ -31,14 +40,14 @@ class _CartTotal extends StatelessWidget {
       builder: (context, _, __) {
         final cart = (VxState.store as MyStore).cart;
         return SizedBox(
-          height: 200,
+          height: 100.0,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              "\$${cart.totalPrice}"
+              "\$${cart.totalPrice.toStringAsFixed(2)}"
                   .text
-                  .xl5
-                  .color(context.theme.colorScheme.secondary)
+                  .xl4
+                  .color(context.theme.colorScheme.primary)
                   .make(),
               30.widthBox,
               ElevatedButton(
@@ -63,8 +72,8 @@ class _CartTotal extends StatelessWidget {
                   ),
                   foregroundColor: MaterialStateProperty.all(Colors.white),
                 ),
-                child: "Buy".text.white.make(),
-              ).w32(context)
+                child: "Buy".text.size(18).make(),
+              ).wh24(context).h(40)
             ],
           ),
         );
@@ -96,20 +105,28 @@ class _CartList extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    elevation: 0, // <-- Remove shadow
+                    color: Theme.of(context).cardColor,
+                    elevation: 1,
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
-                      // Replace this inside your itemBuilder:
                       child: Row(
                         children: [
-                          // Remove CircleAvatar and use a plain image with rounded corners
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: Image.network(
-                              item.imageUrl,
-                              width: 56,
-                              height: 56,
-                              fit: BoxFit.cover,
+                          Container(
+                            width: 64,
+                            height: 64,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .tertiaryContainer,
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            padding: const EdgeInsets.all(4),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: Image.network(
+                                item.imageUrl,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                           16.widthBox,
@@ -117,8 +134,16 @@ class _CartList extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                item.name.text.lg.bold.make(),
-                                "Quantity: $qty".text.make(),
+                                item.name.text.lg
+                                    .color(context.theme.colorScheme.onSurface)
+                                    .bold
+                                    .make(),
+                                "Quantity: $qty"
+                                    .text
+                                    .size(14)
+                                    .color(context
+                                        .theme.colorScheme.onSurfaceVariant)
+                                    .make(),
                                 "\$${item.price}"
                                     .text
                                     .color(context.theme.colorScheme.primary)
@@ -131,13 +156,18 @@ class _CartList extends StatelessWidget {
                             onPressed: () {
                               RemoveMutation(item);
                             },
+                            color: context.theme.colorScheme.primary,
                           ),
-                          Text('$qty'),
+                          Text('$qty')
+                              .text
+                              .color(context.theme.colorScheme.onSurface)
+                              .make(),
                           IconButton(
                             icon: const Icon(Icons.add),
                             onPressed: () {
                               AddMutation(item);
                             },
+                            color: context.theme.colorScheme.primary,
                           ),
                         ],
                       ),

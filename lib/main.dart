@@ -17,11 +17,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoutes.HomeRoute,
+      initialRoute: MyRoutes.loginRoute,
       routes: {
         MyRoutes.loginRoute: (context) => const LoginPage(),
         MyRoutes.HomeRoute: (context) => HomePage(),
